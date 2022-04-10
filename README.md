@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project name
+# Anime quotes
 
 Description
 
@@ -24,12 +24,12 @@ To get a local copy up and running follow these simple example steps:
 - Change the current working directory to the location you want the cloned directory.
 - Enter the following:
 ```
-$ git clone git@github.com:mirouhml/mv-space-travellers.git.
+$ git clone git@github.com:mirouhml/anime-quotes.git.
 ```
 - Press Enter to create your local clone.
 - Navigate to the cloned repository by running:
 ```
-$ cd mv-space-travellers
+$ cd anime-quotes
 ```
 - Install all dependencies using:
 ``` 
@@ -60,7 +60,7 @@ $ npm start
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/mirouhml/mv-space-travellers/issues).
+Feel free to check the [issues page](https://github.com/mirouhml/anime-quotes/issues).
 
 ## Show your support
 
