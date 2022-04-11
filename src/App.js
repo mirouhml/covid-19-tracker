@@ -1,11 +1,15 @@
 import './App.css';
+import {
+  HashRouter as Router,
+} from 'react-router-dom';
+import Navigation from './components/Navigation';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Covid-19 Data</h1>
-    </div>
-  );
-}
+const App = () => (
+  <div className="App">
+    <Router>
+      <Navigation />
+    </Router>
+  </div>
+);
 
 export default App;
