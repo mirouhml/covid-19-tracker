@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Anime quotes
+# Covid-19 Data
 
 Description
 
@@ -15,7 +15,7 @@ Description
 
 ## Live demo
 
-You can visit live version via [Github Pages](https://mirouhml.github.io/anime-quotes/).
+You can visit live version via [Github Pages](https://mirouhml.github.io/covid-19-data/).
 
 ## Getting Started
 
@@ -24,12 +24,12 @@ To get a local copy up and running follow these simple example steps:
 - Change the current working directory to the location you want the cloned directory.
 - Enter the following:
 ```
-$ git clone git@github.com:mirouhml/anime-quotes.git.
+$ git clone git@github.com:mirouhml/covid-19-data.git.
 ```
 - Press Enter to create your local clone.
 - Navigate to the cloned repository by running:
 ```
-$ cd anime-quotes
+$ cd covid-19-data
 ```
 - Install all dependencies using:
 ``` 
