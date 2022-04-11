@@ -2,6 +2,7 @@
   "name": "anime-quotes",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://mirouhml.github.io/anime-quotes/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
