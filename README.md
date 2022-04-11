@@ -55,6 +55,10 @@ $ npm start
 - LinkedIn: [ammar-hamlaoui](https://www.linkedin.com/in/ammar-hamlaoui-514909189/)
 - Twitter: [@kuronomirou](https://twitter.com/kuronomirou)
 
+## Design 
+
+- Original design idea by [Nelson Sakwa on Behance](https://www.behance.net/sakwadesignstudio)
+- [Design Guideline](https://www.behance.net/gallery/31579789/Ballhead-App-(Free-PSDs)) 
 
 ## Contributors
 
