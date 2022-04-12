@@ -1,0 +1,30 @@
+.categories {
+  list-style-type: none;
+  display: grid;
+  margin-block: 0;
+  padding: 0;
+  grid-template-columns: 50% 50%;
+  grid-auto-rows: max-content;
+}
+
+.header {
+  background-color: #4369b2;
+  color: white;
+  padding: 2rem 0;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  padding-top: 1rem;
+  color: black;
+}
+
+.filter-button {
+  border: 1px solid white;
+  padding: 0.5rem;
+  background-color: #fff;
+}

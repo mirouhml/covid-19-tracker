@@ -5,7 +5,8 @@ const Details = () => {
   const { category } = location.state;
   return (
     <div>
-      <h2>{category}</h2>
+      <h2>{category.country}</h2>
+      <h3>{category.confirmed}</h3>
     </div>
   );
 };

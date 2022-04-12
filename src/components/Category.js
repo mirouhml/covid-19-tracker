@@ -3,6 +3,7 @@
 import {
   NavLink,
 } from 'react-router-dom';
+import '../styles/Category.css';
 
 const Category = (props) => {
   const { category } = props;
@@ -10,12 +11,15 @@ const Category = (props) => {
     <div>
       <NavLink
         to={{
-          pathname: `/categories/${category}`,
+          pathname: `/categories/${category.id}`,
         }}
         state={{ category }}
-        className="link"
+        className="category-link"
       >
-        <h3>{category}</h3>
+        <div className="category">
+          <h3>{category.country}</h3>
+          <h3>{category.confirmed}</h3>
+        </div>
       </NavLink>
     </div>
   );

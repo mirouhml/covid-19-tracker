@@ -1,0 +1,15 @@
+.category {
+  width: 100%;
+  height: 12rem;
+  background-color: #4168af;
+}
+
+.category-link {
+  text-decoration: none;
+  color: white;
+  border: 0;
+}
+
+.category h3 {
+  margin: 0;
+}
