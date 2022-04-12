@@ -7,6 +7,7 @@ const Details = () => {
     <div>
       <h2>{category.country}</h2>
       <h3>{category.confirmed}</h3>
+      <a href="/">back</a>
     </div>
   );
 };
