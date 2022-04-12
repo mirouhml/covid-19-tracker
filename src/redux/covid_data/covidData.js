@@ -22,7 +22,6 @@ const getCovidData = () => async (dispatch) => {
         });
       }
     });
-    console.log(covidData);
     dispatch({
       type: GET_COVID_DATA,
       covidData,
