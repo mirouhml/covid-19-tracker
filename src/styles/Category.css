@@ -1,7 +1,14 @@
 .category {
   width: 100%;
   height: 12rem;
-  background-color: #4168af;
+}
+
+.light-blue {
+  background-color: #4268b0;
+}
+
+.dark-blue {
+  background-color: #3e61a3;
 }
 
 .category-link {
