@@ -8,6 +8,7 @@
 }
 
 .header {
+  display: block;
   background-color: #4369b2;
   color: white;
   padding: 2rem 0;
