@@ -7,6 +7,9 @@ import '../styles/Category.css';
 
 const Category = (props) => {
   const { category } = props;
+  const hide = () => {
+    document.querySelector('.header').style.display = 'none';
+  };
   return (
     <div>
       <NavLink
@@ -15,6 +18,7 @@ const Category = (props) => {
         }}
         state={{ category }}
         className="category-link"
+        onClick={hide}
       >
         <div className="category">
           <h3>{category.country}</h3>
