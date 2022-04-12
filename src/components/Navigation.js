@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Route,
   Routes,
+  Navigate,
 } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCovidData } from '../redux/covid_data/covidData';
@@ -65,7 +66,8 @@ const Navigation = () => {
         </div>
       </div>
       <Routes>
-        <Route path="*" element={<Categories categories={categories} setCategories={setCategories} />} />
+        <Route path="/" element={<Navigate replace to="/categories" />} />
+        <Route path="/categories" element={<Categories categories={categories} setCategories={setCategories} />} />
         <Route path="/categories/:id" element={<Details />} />
       </Routes>
     </div>
