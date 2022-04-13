@@ -1,7 +1,14 @@
 import { v4 as uuidv4 } from 'uuid';
-import FetchCovidData from '../../services/FetchCovidData';
+import Maps from '@svg-maps/world';
+import { FetchCovidData } from '../../services/FetchCovidData';
 
 const GET_COVID_DATA = 'GET_COVID_DATA';
+
+const getMap = (id) => {
+  const map = Maps.locations.filter((loc) => loc.id === id);
+  if (map.length > 0) return map[0].path;
+  return '';
+};
 
 const getCovidData = () => async (dispatch) => {
   try {
@@ -19,6 +26,7 @@ const getCovidData = () => async (dispatch) => {
           continent: data[1].All.continent,
           abbreviation: data[1].All.abbreviation,
           updated: data[1].All.updated,
+          map: getMap(data[1].All.abbreviation.toLowerCase()),
         });
       }
     });
