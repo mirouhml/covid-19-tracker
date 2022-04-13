@@ -1,0 +1,71 @@
+.details-header {
+  display: flex;
+  background-color: #4369b2;
+  padding: 0.8rem;
+  width: 100%;
+  align-items: center;
+}
+
+.details-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  flex-grow: 1;
+  color: white;
+}
+
+.back-arrow {
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.general-stats {
+  background-color: #5487e2;
+  color: white;
+  min-height: 12rem;
+}
+
+.details-chart {
+  font-size: 0.8rem;
+  background-color: white;
+  display: block;
+  width: 95%;
+  margin: 2rem auto;
+}
+
+.chart {
+  width: 100%;
+}
+
+.st0 {
+  fill: #f80;
+}
+
+.st1 {
+  fill: white;
+}
+
+.loading {
+  -webkit-animation: spin 6s linear infinite;
+  -moz-animation: spin 6s linear infinite;
+  animation: spin 6s linear infinite;
+}
+
+@-moz-keyframes spin {
+  100% { -moz-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.wait {
+  color: white;
+}
