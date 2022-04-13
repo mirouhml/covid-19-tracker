@@ -7,6 +7,7 @@ const api = axios.create({
   },
 });
 
-const getCovidData = () => api.get('/cases');
-
-export default getCovidData;
+const FetchCovidData = () => api.get('/cases');
+const FetchHistoryConfirmedCases = (country) => api.get(`/history?country=${country}&status=confirmed`);
+const FetchHistoryDeathCases = (country) => api.get(`/history?country=${country}&status=deaths`);
+export { FetchCovidData, FetchHistoryConfirmedCases, FetchHistoryDeathCases };
