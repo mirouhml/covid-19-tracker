@@ -11,7 +11,7 @@
   display: block;
   background-color: #5485e3;
   color: white;
-  padding: 2rem 0;
+  padding: 0 0 2rem 0;
 }
 
 .filters {
@@ -28,4 +28,16 @@
   border: 1px solid white;
   padding: 0.5rem;
   background-color: #fff;
+}
+
+.categories-container li {
+  background-color: #4268b0;
+}
+
+.categories-container li:nth-child(4n+2) {
+  background-color: #3e61a3;
+}
+
+.categories-container li:nth-child(4n+3) {
+  background-color: #3e61a3;
 }
