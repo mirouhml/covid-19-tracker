@@ -2,7 +2,15 @@ import { v4 as uuidv4 } from 'uuid';
 import Maps from '@svg-maps/world';
 import { FetchCovidData } from '../../services/FetchCovidData';
 
-const GET_COVID_DATA = 'GET_COVID_DATA';
+const FETCHING_COVID_DATA = 'FETCHING_COVID_DATA';
+const FETCHING_COVID_SUCCESS = 'FETCHING_COVID_SUCCESS';
+const FETCHING_COVID_ERROR = 'FETCHING_COVID_ERROR';
+
+const initialState = {
+  fetched: false,
+  data: {},
+  error: '',
+};
 
 const getMap = (id) => {
   const map = Maps.locations.filter((loc) => loc.id === id);
@@ -12,7 +20,20 @@ const getMap = (id) => {
 
 const getCovidData = () => async (dispatch) => {
   try {
+    dispatch({
+      type: FETCHING_COVID_DATA,
+    });
     const res = await FetchCovidData();
+    if (res.status !== 200) {
+      throw new Error(
+        'Can not fetch Covid-19 data from the API.',
+      );
+    }
+    if (Object.keys(res.data)[0] === 'Global') {
+      throw new Error(
+        'The API is down.',
+      );
+    }
     const dataArray = Object.entries(res.data);
     const covidData = [];
     dataArray.forEach((data) => {
@@ -31,21 +52,38 @@ const getCovidData = () => async (dispatch) => {
       }
     });
     dispatch({
-      type: GET_COVID_DATA,
+      type: FETCHING_COVID_SUCCESS,
       covidData,
     });
     return Promise.resolve(covidData);
   } catch (err) {
+    dispatch({
+      type: FETCHING_COVID_ERROR,
+      error: err.message,
+    });
+    console.log('here', err.message);
     return Promise.reject(err);
   }
 };
 
-const reducer = (covidData = [], action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_COVID_DATA:
-      return action.covidData;
+    case FETCHING_COVID_DATA:
+      return { ...state, fetched: false };
+    case FETCHING_COVID_SUCCESS:
+      return {
+        fetched: true,
+        data: action.covidData,
+        error: '',
+      };
+    case FETCHING_COVID_ERROR:
+      return {
+        fetched: false,
+        ...state,
+        error: action.error,
+      };
     default:
-      return covidData;
+      return state;
   }
 };
 
