@@ -1,7 +1,7 @@
 .category {
   width: 100%;
   height: 12rem;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 .light-blue {
@@ -20,4 +20,13 @@
 
 .category h3 {
   margin: 0;
+}
+
+.category-info {
+  text-align: right;
+  padding: 0 1rem;
+}
+
+.category-title {
+  font-size: 1rem;
 }

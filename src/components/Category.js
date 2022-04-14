@@ -32,8 +32,10 @@ const Category = (props) => {
               <path fill="#2D4573" d={category.map} />
             </g>
           </svg>
-          <h3>{category.country}</h3>
-          <h3>{category.confirmed}</h3>
+          <div className="category-info">
+            <h3 className="category-title">{category.country}</h3>
+            <h3 className="lato">{`Cases: ${category.confirmed}`}</h3>
+          </div>
         </div>
       </NavLink>
     </div>
