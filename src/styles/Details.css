@@ -72,6 +72,11 @@
   color: white;
 }
 
+.chart-title {
+  color: white;
+  padding-top: 1rem;
+}
+
 .chart-type {
   display: flex;
   flex-wrap: wrap;
@@ -79,7 +84,6 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  padding-top: 1rem;
   color: white;
 }
 
@@ -95,6 +99,7 @@
 
 .lato {
   font-family: 'Lato', sans-serif;
+  font-weight: 300;
   font-size: 0.9rem;
 }
 

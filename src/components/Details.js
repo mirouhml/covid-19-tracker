@@ -100,6 +100,7 @@ const Details = () => {
             <h3 className="lato">{`Deaths: ${category.deaths}`}</h3>
           </div>
         </div>
+        <h3 className="chart-title">Past 3 months&apos; stats</h3>
         <div className="chart-type">
           <h3>Charts:</h3>
           <button type="button" className="type-button type-selected" id="confirmed" onClick={filter}>Cases</button>
@@ -108,9 +109,9 @@ const Details = () => {
         <div className="details-chart">
           {toShow
             && (
-              <ResponsiveContainer width="100%" height={350}>
+              <ResponsiveContainer width="100%" height={300}>
                 <LineChart
-                  data={data.splice(0, 600).reverse()}
+                  data={data.splice(0, 100).reverse()}
                   margin={{
                     top: 5, right: 7, bottom: 10, left: 7,
                   }}
@@ -125,7 +126,7 @@ const Details = () => {
             )}
           {!toShow
             && (
-              <ResponsiveContainer width="100%" height={350}>
+              <ResponsiveContainer width="100%" height={300}>
                 <LineChart
                   data={data.splice(0, 600).reverse()}
                   margin={{
