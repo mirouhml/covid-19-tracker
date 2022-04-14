@@ -1,8 +1,8 @@
 {
-  "name": "covid-19-data",
+  "name": "covid-19-tracker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mirouhml.github.io/covid-19-data/",
+  "homepage": "https://mirouhml.github.io/covid-19-tracker/",
   "dependencies": {
     "@svg-maps/world": "^1.0.1",
     "@testing-library/jest-dom": "^5.16.4",
