@@ -7,13 +7,10 @@ import '../styles/Category.css';
 
 const Category = (props) => {
   const { category, index } = props;
-  const hide = () => {
-    document.querySelector('.header').style.display = 'none';
-  };
 
   useEffect(() => {
-    const BB = document.querySelectorAll('.mapG')[index].getBBox();
-    document.querySelectorAll('.map')[index].setAttributeNS(null, 'viewBox', `${BB.x} ${BB.y} ${BB.width} ${BB.height}`);
+    const BB = document.querySelectorAll('.mapG')[index]?.getBBox();
+    document.querySelectorAll('.map')[index]?.setAttributeNS(null, 'viewBox', `${BB.x} ${BB.y} ${BB.width} ${BB.height}`);
   }, []);
 
   return (
@@ -24,7 +21,6 @@ const Category = (props) => {
         }}
         state={{ category }}
         className="category-link"
-        onClick={hide}
       >
         <div className="category">
           <div className="map-container">
