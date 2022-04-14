@@ -20,7 +20,6 @@ const Details = () => {
   const data = [];
 
   useEffect(() => {
-    setToShow(true);
     dispatch(getHistoryData(category.country));
     document.querySelector('.header').style.display = 'none';
     if (isFetched) {
@@ -31,6 +30,13 @@ const Details = () => {
 
   useEffect(() => {
     if (isFetched) {
+      if (toShow) {
+        document.querySelector('.type-selected')?.classList.remove('type-selected');
+        document.getElementById('confirmed').classList.add('type-selected');
+      } else {
+        document.querySelector('.type-selected')?.classList.remove('type-selected');
+        document.getElementById('deaths').classList.add('type-selected');
+      }
       const BB = document.querySelector('.details-mapG').getBBox();
       document.querySelector('.details-map').setAttributeNS(null, 'viewBox', `${BB.x} ${BB.y} ${BB.width} ${BB.height}`);
     }
@@ -119,7 +125,7 @@ const Details = () => {
             )}
           {!toShow
             && (
-              <ResponsiveContainer width="100%">
+              <ResponsiveContainer width="100%" height={350}>
                 <LineChart
                   data={data.splice(0, 600).reverse()}
                   margin={{
