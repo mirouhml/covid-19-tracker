@@ -100,7 +100,7 @@ const Details = () => {
             <h3 className="lato">{`Deaths: ${category.deaths}`}</h3>
           </div>
         </div>
-        <h3 className="chart-title">Past 3 months&apos; stats</h3>
+        <h3 className="chart-title">The past 3 months&apos; stats</h3>
         <div className="chart-type">
           <h3>Charts:</h3>
           <button type="button" className="type-button type-selected" id="confirmed" onClick={filter}>Cases</button>
