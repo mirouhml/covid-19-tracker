@@ -61,7 +61,6 @@ const getCovidData = () => async (dispatch) => {
       type: FETCHING_COVID_ERROR,
       error: err.message,
     });
-    console.log('here', err.message);
     return Promise.reject(err);
   }
 };
