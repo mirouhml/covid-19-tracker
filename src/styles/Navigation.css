@@ -24,3 +24,11 @@
   background-color: #2d4573;
   color: white;
 }
+
+.intro {
+  margin-top: 0.5rem;
+}
+
+button {
+  font-family: 'Lato', sans-serif;
+}
