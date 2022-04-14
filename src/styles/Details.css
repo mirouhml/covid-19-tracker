@@ -1,0 +1,119 @@
+.details-header {
+  display: flex;
+  background-color: #4369b2;
+  padding: 0.8rem;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+}
+
+.details-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  flex-grow: 1;
+  color: white;
+}
+
+.back-arrow {
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.general-stats {
+  justify-self: flex-end;
+  align-self: center;
+  text-align: right;
+}
+
+.details-chart {
+  font-size: 0.8rem;
+  background-color: white;
+  display: block;
+  width: 95%;
+  margin: 2rem auto;
+}
+
+.chart {
+  width: 100%;
+}
+
+.st0 {
+  fill: #f80;
+}
+
+.st1 {
+  fill: white;
+}
+
+.loading {
+  -webkit-animation: spin 6s linear infinite;
+  -moz-animation: spin 6s linear infinite;
+  animation: spin 6s linear infinite;
+}
+
+@-moz-keyframes spin {
+  100% { -moz-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.wait {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.chart-title {
+  color: white;
+  padding: 1rem 0;
+}
+
+.chart-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.type-button {
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.type-selected {
+  background-color: #5487e2;
+  color: white;
+}
+
+.lato {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.general-stats-container {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  background-color: #5487e2;
+  color: white;
+  min-height: 12rem;
+  padding: 1rem;
+}
+
+.details-map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
