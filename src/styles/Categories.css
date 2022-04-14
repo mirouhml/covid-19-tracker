@@ -41,3 +41,12 @@
 .categories-container li:nth-child(4n+3) {
   background-color: #3e61a3;
 }
+
+.error-container {
+  color: white;
+}
+
+.error-message {
+  margin-top: 5rem;
+  font-size: 3rem;
+}
