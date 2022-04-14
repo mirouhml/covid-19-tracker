@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import Maps from '@svg-maps/world';
-import { FetchCovidData } from '../../services/FetchCovidData';
+import { FetchCovidData, FetchCovidDataHistory, FetchCovidDataHistoryDeaths } from '../../services/FetchCovidData';
 
 const FETCHING_COVID_DATA = 'FETCHING_COVID_DATA';
 const FETCHING_COVID_SUCCESS = 'FETCHING_COVID_SUCCESS';
@@ -10,6 +10,7 @@ const initialState = {
   fetched: false,
   data: {},
   error: '',
+  dataType: 'new',
 };
 
 const getMap = (id) => {
@@ -30,9 +31,35 @@ const getCovidData = () => async (dispatch) => {
       );
     }
     if (Object.keys(res.data)[0] === 'Global') {
-      throw new Error(
-        'The API is down.',
-      );
+      const res2 = await FetchCovidDataHistory();
+      const res3 = await FetchCovidDataHistoryDeaths();
+      if (res2.status !== 200 || res3.status !== 200) {
+        throw new Error(
+          'Can not fetch Covid-19 data from the API.',
+        );
+      }
+      const data2 = Object.entries(res2.data);
+      const data3 = Object.entries(res3.data);
+      const covidData = [];
+      data2.forEach((data, index) => {
+        if (data[1].All.country && data[1].All.continent && data[1].All.abbreviation) {
+          covidData.push({
+            id: uuidv4(),
+            confirmed: Object.entries(data[1].All.dates)[0][1],
+            deaths: Object.entries(data3[index][1].All.dates)[0][1],
+            country: data[1].All.country,
+            continent: data[1].All.continent,
+            abbreviation: data[1].All.abbreviation,
+            map: getMap(data[1].All.abbreviation.toLowerCase()),
+          });
+        }
+      });
+      dispatch({
+        type: FETCHING_COVID_SUCCESS,
+        covidData,
+        dataType: 'old',
+      });
+      return Promise.resolve(covidData);
     }
     const dataArray = Object.entries(res.data);
     const covidData = [];
@@ -54,6 +81,7 @@ const getCovidData = () => async (dispatch) => {
     dispatch({
       type: FETCHING_COVID_SUCCESS,
       covidData,
+      dataType: 'new',
     });
     return Promise.resolve(covidData);
   } catch (err) {
@@ -74,6 +102,7 @@ const reducer = (state = initialState, action) => {
         fetched: true,
         data: action.covidData,
         error: '',
+        dataType: action.dataType,
       };
     case FETCHING_COVID_ERROR:
       return {
