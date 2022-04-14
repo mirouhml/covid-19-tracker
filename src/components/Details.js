@@ -9,8 +9,8 @@ import '../styles/Details.css';
 
 const Details = () => {
   const dispatch = useDispatch();
-  const deathCases = useSelector((state) => state.covidHistory.history.deathHistory);
   const confirmedCases = useSelector((state) => state.covidHistory.history.confirmedHistory);
+  const deathCases = useSelector((state) => state.covidHistory.history.deathHistory);
   const isFetched = useSelector((state) => state.covidHistory.fetched);
   const error = useSelector((state) => state.covidHistory.error);
   const location = useLocation();
