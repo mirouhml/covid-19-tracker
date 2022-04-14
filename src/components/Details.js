@@ -16,18 +16,39 @@ const Details = () => {
   const location = useLocation();
   const { category } = location.state;
   const navigate = useNavigate();
-  const [headerHidden, setHeaderHidden] = useState(true);
-
+  const [toShow, setToShow] = useState(true);
   const data = [];
 
   useEffect(() => {
+    setToShow(true);
     dispatch(getHistoryData(category.country));
-    if (headerHidden) document.querySelector('.header').style.display = 'none';
+    document.querySelector('.header').style.display = 'none';
     if (isFetched) {
-      const BB = document.getElementById('mapG').getBBox();
-      document.getElementById('map').setAttributeNS(null, 'viewBox', `${BB.x} ${BB.y} ${BB.width} ${BB.height}`);
+      const BB = document.querySelector('.details-mapG').getBBox();
+      document.querySelector('.details-map').setAttributeNS(null, 'viewBox', `${BB.x} ${BB.y} ${BB.width} ${BB.height}`);
     }
   }, []);
+
+  useEffect(() => {
+    if (isFetched) {
+      const BB = document.querySelector('.details-mapG').getBBox();
+      document.querySelector('.details-map').setAttributeNS(null, 'viewBox', `${BB.x} ${BB.y} ${BB.width} ${BB.height}`);
+    }
+  }, [isFetched]);
+
+  const filter = (e) => {
+    switch (e.target.id) {
+      case 'deaths':
+        document.querySelector('.type-selected')?.classList.remove('type-selected');
+        document.getElementById('deaths').classList.add('type-selected');
+        setToShow(false);
+        break;
+      default:
+        document.querySelector('.type-selected')?.classList.remove('type-selected');
+        document.getElementById('confirmed').classList.add('type-selected');
+        setToShow(true);
+    }
+  };
 
   if (isFetched) {
     Object.keys(confirmedCases).forEach((key) => data.push({
@@ -44,40 +65,76 @@ const Details = () => {
             onClick={() => {
               navigate(-1);
               document.querySelector('.header').style.display = 'block';
-              setHeaderHidden(false);
             }}
           >
             <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 320 512" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" /></svg>
           </button>
           <h2 className="details-title">{category.country}</h2>
+          <svg viewBox="0 0 470 470" height="1em" width="1em" fill="white">
+            <g>
+              <path d="M235,302.296c47.177,0,85.423-38.245,85.423-85.423V85.423C320.423,38.245,282.177,0,235,0s-85.423,38.245-85.423,85.423v131.451C149.577,264.051,187.823,302.296,235,302.296z" />
+              <path d="M350.423,136.148v30h15v50.726c0,71.915-58.508,130.423-130.423,130.423s-130.423-58.507-130.423-130.423v-50.726h15v-30h-45v80.726C74.577,300.273,138.551,369,220,376.589V440h-90.444v30h210.889v-30H250v-63.411c81.449-7.589,145.423-76.317,145.423-159.716v-80.726H350.423z" />
+            </g>
+          </svg>
+          <svg fill="#fff" viewBox="0 0 50 50" width="1em" height="1em">
+            <path d="M47.16,21.221l-5.91-0.966c-0.346-1.186-0.819-2.326-1.411-3.405l3.45-4.917c0.279-0.397,0.231-0.938-0.112-1.282 l-3.889-3.887c-0.347-0.346-0.893-0.391-1.291-0.104l-4.843,3.481c-1.089-0.602-2.239-1.08-3.432-1.427l-1.031-5.886 C28.607,2.35,28.192,2,27.706,2h-5.5c-0.49,0-0.908,0.355-0.987,0.839l-0.956,5.854c-1.2,0.345-2.352,0.818-3.437,1.412l-4.83-3.45 c-0.399-0.285-0.942-0.239-1.289,0.106L6.82,10.648c-0.343,0.343-0.391,0.883-0.112,1.28l3.399,4.863 c-0.605,1.095-1.087,2.254-1.438,3.46l-5.831,0.971c-0.482,0.08-0.836,0.498-0.836,0.986v5.5c0,0.485,0.348,0.9,0.825,0.985 l5.831,1.034c0.349,1.203,0.831,2.362,1.438,3.46l-3.441,4.813c-0.284,0.397-0.239,0.942,0.106,1.289l3.888,3.891 c0.343,0.343,0.884,0.391,1.281,0.112l4.87-3.411c1.093,0.601,2.248,1.078,3.445,1.424l0.976,5.861C21.3,47.647,21.717,48,22.206,48 h5.5c0.485,0,0.9-0.348,0.984-0.825l1.045-5.89c1.199-0.353,2.348-0.833,3.43-1.435l4.905,3.441 c0.398,0.281,0.938,0.232,1.282-0.111l3.888-3.891c0.346-0.347,0.391-0.894,0.104-1.292l-3.498-4.857 c0.593-1.08,1.064-2.222,1.407-3.408l5.918-1.039c0.479-0.084,0.827-0.5,0.827-0.985v-5.5C47.999,21.718,47.644,21.3,47.16,21.221z M25,32c-3.866,0-7-3.134-7-7c0-3.866,3.134-7,7-7s7,3.134,7,7C32,28.866,28.866,32,25,32z" />
+          </svg>
         </div>
-        <div className="general-stats">
-          <h2>Today stats</h2>
-          <h3>{`Confirmed cases: ${category.confirmed}`}</h3>
-          <h3>{`Death cases: ${category.deaths}`}</h3>
+        <div className="general-stats-container">
+          <div className="details-map-container">
+            <svg className="details-map" height="7.5rem" width="8rem">
+              <g className="details-mapG">
+                <path fill="#2D4573" d={category.map} />
+              </g>
+            </svg>
+          </div>
+          <div className="general-stats">
+            <h2>Today&apos;s stats</h2>
+            <h3 className="lato">{`Cases: ${category.confirmed}`}</h3>
+            <h3 className="lato">{`Deaths: ${category.deaths}`}</h3>
+          </div>
+        </div>
+        <div className="chart-type">
+          <h3>Charts:</h3>
+          <button type="button" className="type-button type-selected" id="confirmed" onClick={filter}>Cases</button>
+          <button type="button" className="type-button" id="deaths" onClick={filter}>Deaths</button>
         </div>
         <div className="details-chart">
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart
-              data={data.splice(0, 600).reverse()}
-              margin={{
-                top: 5, right: 7, bottom: 10, left: 7,
-              }}
-            >
-              <Tooltip />
-              <Legend />
-              <Line dot={false} type="monotone" dataKey="Confirmed cases" stroke="#8884d8" />
-              <Line dot={false} type="monotone" dataKey="Death cases" stroke="green" />
-              <XAxis dataKey="name" label={{ value: 'Date', offset: 2, position: 'insideBottom' }} />
-              <YAxis label={{ value: 'Number of cases', angle: -90, position: 'insideLeft' }} />
-            </LineChart>
-          </ResponsiveContainer>
+          {toShow
+            && (
+              <ResponsiveContainer width="100%" height={350}>
+                <LineChart
+                  data={data.splice(0, 600).reverse()}
+                  margin={{
+                    top: 5, right: 7, bottom: 10, left: 7,
+                  }}
+                >
+                  <Tooltip />
+                  <Legend />
+                  <Line dot={false} type="monotone" dataKey="Confirmed cases" stroke="green" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                </LineChart>
+              </ResponsiveContainer>
+            )}
+          {!toShow
+            && (
+              <ResponsiveContainer width="100%">
+                <LineChart
+                  data={data.splice(0, 600).reverse()}
+                  margin={{
+                    top: 5, right: 7, bottom: 10, left: 7,
+                  }}
+                >
+                  <Tooltip />
+                  <Legend />
+                  <Line dot={false} type="monotone" dataKey="Death cases" stroke="red" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                </LineChart>
+              </ResponsiveContainer>
+            )}
         </div>
-        <svg id="map" viewBox="0 0 30 30" width="300">
-          <g id="mapG">
-            <path stroke="black" strokeWidth="1" d={category.map} />
-          </g>
-        </svg>
       </div>
     );
   }
@@ -91,12 +148,20 @@ const Details = () => {
             onClick={() => {
               navigate(-1);
               document.querySelector('.header').style.display = 'block';
-              setHeaderHidden(false);
             }}
           >
             <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 320 512" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" /></svg>
           </button>
           <h2 className="details-title">{category.country}</h2>
+          <svg viewBox="0 0 470 470" height="1em" width="1em" fill="white">
+            <g>
+              <path d="M235,302.296c47.177,0,85.423-38.245,85.423-85.423V85.423C320.423,38.245,282.177,0,235,0s-85.423,38.245-85.423,85.423v131.451C149.577,264.051,187.823,302.296,235,302.296z" />
+              <path d="M350.423,136.148v30h15v50.726c0,71.915-58.508,130.423-130.423,130.423s-130.423-58.507-130.423-130.423v-50.726h15v-30h-45v80.726C74.577,300.273,138.551,369,220,376.589V440h-90.444v30h210.889v-30H250v-63.411c81.449-7.589,145.423-76.317,145.423-159.716v-80.726H350.423z" />
+            </g>
+          </svg>
+          <svg fill="#fff" viewBox="0 0 50 50" width="1em" height="1em">
+            <path d="M47.16,21.221l-5.91-0.966c-0.346-1.186-0.819-2.326-1.411-3.405l3.45-4.917c0.279-0.397,0.231-0.938-0.112-1.282 l-3.889-3.887c-0.347-0.346-0.893-0.391-1.291-0.104l-4.843,3.481c-1.089-0.602-2.239-1.08-3.432-1.427l-1.031-5.886 C28.607,2.35,28.192,2,27.706,2h-5.5c-0.49,0-0.908,0.355-0.987,0.839l-0.956,5.854c-1.2,0.345-2.352,0.818-3.437,1.412l-4.83-3.45 c-0.399-0.285-0.942-0.239-1.289,0.106L6.82,10.648c-0.343,0.343-0.391,0.883-0.112,1.28l3.399,4.863 c-0.605,1.095-1.087,2.254-1.438,3.46l-5.831,0.971c-0.482,0.08-0.836,0.498-0.836,0.986v5.5c0,0.485,0.348,0.9,0.825,0.985 l5.831,1.034c0.349,1.203,0.831,2.362,1.438,3.46l-3.441,4.813c-0.284,0.397-0.239,0.942,0.106,1.289l3.888,3.891 c0.343,0.343,0.884,0.391,1.281,0.112l4.87-3.411c1.093,0.601,2.248,1.078,3.445,1.424l0.976,5.861C21.3,47.647,21.717,48,22.206,48 h5.5c0.485,0,0.9-0.348,0.984-0.825l1.045-5.89c1.199-0.353,2.348-0.833,3.43-1.435l4.905,3.441 c0.398,0.281,0.938,0.232,1.282-0.111l3.888-3.891c0.346-0.347,0.391-0.894,0.104-1.292l-3.498-4.857 c0.593-1.08,1.064-2.222,1.407-3.408l5.918-1.039c0.479-0.084,0.827-0.5,0.827-0.985v-5.5C47.999,21.718,47.644,21.3,47.16,21.221z M25,32c-3.866,0-7-3.134-7-7c0-3.866,3.134-7,7-7s7,3.134,7,7C32,28.866,28.866,32,25,32z" />
+          </svg>
         </div>
         <div className="error-container">
           <h2 className="error-message">Oops!!</h2>
@@ -115,12 +180,20 @@ const Details = () => {
           onClick={() => {
             navigate(-1);
             document.querySelector('.header').style.display = 'block';
-            setHeaderHidden(false);
           }}
         >
           <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 320 512" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" /></svg>
         </button>
         <h2 className="details-title">{category.country}</h2>
+        <svg viewBox="0 0 470 470" height="1em" width="1em" fill="white">
+          <g>
+            <path d="M235,302.296c47.177,0,85.423-38.245,85.423-85.423V85.423C320.423,38.245,282.177,0,235,0s-85.423,38.245-85.423,85.423v131.451C149.577,264.051,187.823,302.296,235,302.296z" />
+            <path d="M350.423,136.148v30h15v50.726c0,71.915-58.508,130.423-130.423,130.423s-130.423-58.507-130.423-130.423v-50.726h15v-30h-45v80.726C74.577,300.273,138.551,369,220,376.589V440h-90.444v30h210.889v-30H250v-63.411c81.449-7.589,145.423-76.317,145.423-159.716v-80.726H350.423z" />
+          </g>
+        </svg>
+        <svg fill="#fff" viewBox="0 0 50 50" width="1em" height="1em">
+          <path d="M47.16,21.221l-5.91-0.966c-0.346-1.186-0.819-2.326-1.411-3.405l3.45-4.917c0.279-0.397,0.231-0.938-0.112-1.282 l-3.889-3.887c-0.347-0.346-0.893-0.391-1.291-0.104l-4.843,3.481c-1.089-0.602-2.239-1.08-3.432-1.427l-1.031-5.886 C28.607,2.35,28.192,2,27.706,2h-5.5c-0.49,0-0.908,0.355-0.987,0.839l-0.956,5.854c-1.2,0.345-2.352,0.818-3.437,1.412l-4.83-3.45 c-0.399-0.285-0.942-0.239-1.289,0.106L6.82,10.648c-0.343,0.343-0.391,0.883-0.112,1.28l3.399,4.863 c-0.605,1.095-1.087,2.254-1.438,3.46l-5.831,0.971c-0.482,0.08-0.836,0.498-0.836,0.986v5.5c0,0.485,0.348,0.9,0.825,0.985 l5.831,1.034c0.349,1.203,0.831,2.362,1.438,3.46l-3.441,4.813c-0.284,0.397-0.239,0.942,0.106,1.289l3.888,3.891 c0.343,0.343,0.884,0.391,1.281,0.112l4.87-3.411c1.093,0.601,2.248,1.078,3.445,1.424l0.976,5.861C21.3,47.647,21.717,48,22.206,48 h5.5c0.485,0,0.9-0.348,0.984-0.825l1.045-5.89c1.199-0.353,2.348-0.833,3.43-1.435l4.905,3.441 c0.398,0.281,0.938,0.232,1.282-0.111l3.888-3.891c0.346-0.347,0.391-0.894,0.104-1.292l-3.498-4.857 c0.593-1.08,1.064-2.222,1.407-3.408l5.918-1.039c0.479-0.084,0.827-0.5,0.827-0.985v-5.5C47.999,21.718,47.644,21.3,47.16,21.221z M25,32c-3.866,0-7-3.134-7-7c0-3.866,3.134-7,7-7s7,3.134,7,7C32,28.866,28.866,32,25,32z" />
+        </svg>
       </div>
       <div className="loading">
         <svg viewBox="0 0 100 100" width="10rem">
