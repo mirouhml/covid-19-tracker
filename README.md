@@ -20,7 +20,7 @@ This is a website that shows recent and old data of Covid-19 stats for all the c
 
 ## Live demo
 
-You can visit live version via [Github Pages](https://mirouhml.github.io/covid-19-data/).
+You can visit live version via [Github Pages](https://mirouhml.github.io/covid-19-tracker/).
 
 ## Getting Started
 
