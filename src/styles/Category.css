@@ -1,4 +1,6 @@
 .category {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 12rem;
   padding: 0.5rem 0;
@@ -32,6 +34,21 @@
 }
 
 .arrow-circle {
-  position: absolute;
+  align-self: flex-start;
+  justify-self: flex-start;
   transform: rotate(-90deg);
+}
+
+.map-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  height: 8rem;
+}
+
+.map {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
 }
