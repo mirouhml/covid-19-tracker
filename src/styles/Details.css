@@ -4,6 +4,7 @@
   padding: 0.8rem;
   width: 100%;
   align-items: center;
+  gap: 1rem;
 }
 
 .details-title {
@@ -20,9 +21,8 @@
 }
 
 .general-stats {
-  background-color: #5487e2;
-  color: white;
-  min-height: 12rem;
+  justify-self: flex-end;
+  align-self: center;
 }
 
 .details-chart {
@@ -69,4 +69,45 @@
 .wait {
   font-size: 1.2rem;
   color: white;
+}
+
+.chart-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  color: white;
+}
+
+.type-button {
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.type-selected {
+  background-color: #5487e2;
+  color: white;
+}
+
+.lato {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+}
+
+.general-stats-container {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  background-color: #5487e2;
+  color: white;
+  min-height: 12rem;
+  padding: 1rem;
+}
+
+.details-map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
