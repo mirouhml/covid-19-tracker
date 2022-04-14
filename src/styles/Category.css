@@ -30,3 +30,8 @@
 .category-title {
   font-size: 1rem;
 }
+
+.arrow-circle {
+  position: absolute;
+  transform: rotate(-90deg);
+}
