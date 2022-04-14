@@ -1,9 +1,8 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import {
   NavLink,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import '../styles/Category.css';
 
 const Category = (props) => {
@@ -39,6 +38,16 @@ const Category = (props) => {
       </NavLink>
     </div>
   );
+};
+
+Category.propTypes = {
+  category: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+    confirmed: PropTypes.number.isRequired,
+    map: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Category;
