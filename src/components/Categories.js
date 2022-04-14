@@ -18,9 +18,9 @@ const Categories = ({ categories }) => {
     <div className="categories-container">
       <ul className="categories">
         {
-          categories.map((category) => (
+          categories.map((category, i) => (
             <li key={category.id}>
-              <Category category={category} />
+              <Category category={category} index={i} />
             </li>
           ))
         }
