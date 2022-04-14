@@ -14,17 +14,17 @@ const Details = () => {
   const isFetched = useSelector((state) => state.covidHistory.fetched);
   const error = useSelector((state) => state.covidHistory.error);
   const location = useLocation();
-  const { category } = location.state;
+  const { category } = (location.state) ? location.state : {};
   const navigate = useNavigate();
   const [toShow, setToShow] = useState(true);
   const data = [];
 
   useEffect(() => {
     dispatch(getHistoryData(category.country));
-    document.querySelector('.header').style.display = 'none';
+    if (document.querySelector('.header')) document.querySelector('.header').style.display = 'none';
     if (isFetched) {
-      const BB = document.querySelector('.details-mapG').getBBox();
-      document.querySelector('.details-map').setAttributeNS(null, 'viewBox', `${BB.x} ${BB.y} ${BB.width} ${BB.height}`);
+      const BB = document.querySelector('.details-mapG')?.getBBox();
+      document.querySelector('.details-map')?.setAttributeNS(null, 'viewBox', `${BB.x} ${BB.y} ${BB.width} ${BB.height}`);
     }
   }, []);
 
