@@ -23,6 +23,7 @@
 .general-stats {
   justify-self: flex-end;
   align-self: center;
+  text-align: right;
 }
 
 .details-chart {
