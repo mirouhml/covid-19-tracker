@@ -1,0 +1,26 @@
+.header {
+  display: block;
+  background-color: #5485e3;
+  color: white;
+  padding: 0 0 2rem 0;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  padding-top: 1rem;
+  color: black;
+}
+
+.filter-button {
+  padding: 0.5rem;
+  background-color: #fff;
+}
+
+.selected {
+  background-color: #2d4573;
+  color: white;
+}
