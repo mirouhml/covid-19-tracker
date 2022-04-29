@@ -6,9 +6,9 @@ This is a website that shows recent and old data of Covid-19 stats for all the c
 
 ## Screenshots
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/20567503/163427412-b95568c1-fc81-47e6-91d4-392432f5a425.png" width="300" />
-  <img src="https://user-images.githubusercontent.com/20567503/163427426-c31e7b51-d22a-4726-82c9-bda71595db07.png" width="300" />
-  <img src="https://user-images.githubusercontent.com/20567503/163427436-8b59e671-ae04-49de-b3b4-f76c22e2b141.png" width="300" />
+  <img src="https://user-images.githubusercontent.com/20567503/163427412-b95568c1-fc81-47e6-91d4-392432f5a425.png" width="250" />
+  <img src="https://user-images.githubusercontent.com/20567503/163427426-c31e7b51-d22a-4726-82c9-bda71595db07.png" width="250" />
+  <img src="https://user-images.githubusercontent.com/20567503/163427436-8b59e671-ae04-49de-b3b4-f76c22e2b141.png" width="250" />
 </p>
 
 
